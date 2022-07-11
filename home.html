@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Registration for Fusion 2022 </title>
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-5 col-md-8 mx-auto shadow border bg-white p-4 rounded">
+                <h2 class="text-center fw-bold mb-3">Registration Form</h2>
+                <form name="google-sheet">
+                    <div id="form_alerts"></div>
+                    <div class="form-group mb-3">
+                        <label for="name" class="form-label">Name :</label>
+                        <div>
+                        <input type="text" id="name" name="Name" class="form-control" placeholder="Enter Your Name" required>
+                    </div></div>
+                    <div class="form-group mb-3">
+                        <label for="email" class="form-label">Email :</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email address" required>
+                    </div>
+                    <div class="form-group mb-3">
+                     <label for="Mobile No" class="form-label">Mobile No :</label>
+                     <input type="tel" name="Mobile" class="form-control" placeholder="Mobile No:-" value="" maxlength="10">
+                    </div>
+                    <div class="form-element radio-buttons">
+                     <span>Gender :</span></div>
+                     <div>
+                        <label for="Male">
+                         <input type="radio" name="Gender" id="Male" value="Male" required>
+                         <span>Male</span>
+                      </label>
+                       <label for="Female">
+                         <input type="radio" name="Gender" id="Female" value="Female" required>
+                         <span>Female</span>
+                        </label>
+                    </div>
+                  <div class="form-group mb-3">
+                     <label for="Age" class="form-label">Can we Know Your Age?</label>
+                     <input type="number" id="Age" name="Age" class="form-control" placeholder="Enter your age:-" required>
+                 </div>
+                 <div class="form-element radio-buttons">
+                  <span>Mode of Payment :</span></div>
+                  <div>
+                   <label for="Online">
+                      <input type="radio" name="Payment" id="Online" value="Online" required>
+                      <span>Online</span>
+                      <a href="upi://pay?pa=densonjacob13-1@okhdfcbank&amp;pn=Fusion 2022&amp; cu=INR">Click this to Pay Now!!!</a>
+                   </label>
+                   <div>
+                  <label for="Offline">
+                      <input type="radio" name="Payment" id="Offline" value="Offline" required>
+                      <span>Offline</span>
+                  </label></div>
+               </div>
+
+                    <div>
+                        <button class="btn btn-primary me-2" type="submit">Register</button>
+                        <button class="btn btn-danger" type="reset">Reset</button>
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzJNuyaSIDrNctnpFTfhEU0ujJ2YfK6sDRLlyFEdfLSAgK2wyk7h9mDw3MmI7PaWPIi/exec'
+        const form = document.forms['google-sheet']
+        
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => $("#form_alerts").html("<div class='alert alert-success'>You have been sucessfully registered for fusion.</div>"))
+            .catch(error => $("#form_alerts").html("<div class='alert alert-danger'>Contact message not sent.</div>"))
+        })
+    </script>
+    <script type='text/javascript'>
+        $(document).ready(function () {
+            $("form").submit(function (e) {
+                // prevent page loading
+                e.preventDefault(e);
+                $('#loadinAnimation').show();
+    
+                // preapre formdata
+    
+                $.ajax({
+                    type: "yourRequestType",
+                    url: "yourUrlEndpoint",
+                    data: formdata,
+                    success: function (data) {
+                        $('#loadinAnimation').hide();
+                        // do rest of the work with data
+                    }
+                });
+    
+            });
+        });
+    </script>
+    
+</body>
+</html>
