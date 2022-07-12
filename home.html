@@ -9,6 +9,7 @@
     <title>Registration for Fusion 2022 </title>
 </head>
 <body>
+    <fieldset>
     <div class="container py-5">
         <div class="row">
             <div class="col-lg-5 col-md-8 mx-auto shadow border bg-white p-4 rounded">
@@ -50,8 +51,9 @@
                    <label for="Online">
                       <input type="radio" name="Payment" id="Online" value="Online" required>
                       <span>Online</span>
-                      <a href="upi://pay?pa=densonjacob13-1@okhdfcbank&amp;pn=Fusion 2022&amp; cu=INR">Click this to Pay Now!!!</a>
+                      <a href="upi://pay?pa=densonjacob13-1@okhdfcbank&amp;pn=Fusion 2022&amp; cu=INR">Click this link or Scan to pay!!!</a>
                    </label>
+                   <img src="/Gpay scanner.jpg" width="100px" height="100px" style="float:right" alt="Scan to Pay Now">
                    <div>
                   <label for="Offline">
                       <input type="radio" name="Payment" id="Offline" value="Offline" required>
@@ -65,6 +67,7 @@
                         
                     </div>
                 </form>
+            </fieldset>
             </div>
         </div>
     </div>
@@ -78,7 +81,7 @@
         form.addEventListener('submit', e => {
             e.preventDefault()
             fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => $("#form_alerts").html("<div class='alert alert-success'>You have been sucessfully registered for fusion.</div>"))
+            .then(response => $("#form_alerts").html("<div class='alert alert-success'>You have been sucessfully registered for Fusion.</div>"))
             .catch(error => $("#form_alerts").html("<div class='alert alert-danger'>Contact message not sent.</div>"))
         })
     </script>
@@ -104,6 +107,12 @@
             });
         });
     </script>
+    <style>
+        fieldset{
+            background-color: powderblue;
+            border: none;
+        }
+    </style>
     
 </body>
 </html>
